@@ -7,6 +7,7 @@ import { buildDevServer } from './buildDevServer'
 
 import type { BuildOptions } from './types/config'
 
+
 export function buildWebpackConfig(options: BuildOptions): webpack.Configuration {
 
     const { mode, paths, isDev } = options
