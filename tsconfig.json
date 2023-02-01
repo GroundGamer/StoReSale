@@ -32,6 +32,9 @@
             Для абсолютного импорта
         */
         "baseUrl": ".",
+        "paths": {
+            "*": ["./src/*"]
+        },
         "esModuleInterop": true,
         /*
             Если какая-либо библиотека не имеет default import,

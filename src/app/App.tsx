@@ -2,19 +2,14 @@ import React from 'react'
 
 import { Route, Link, Routes } from 'react-router-dom'
 
+import { MainPage, AboutPage } from 'pages'
 
-import { MainPageLazy } from './pages/MainPage/MainPage.lazy'
-import { AboutPageLazy } from './pages/AboutPage/AboutPage.lazy'
-
-import { classNames } from './helpers/classNames'
-
-import { useTheme } from './theme/useTheme'
-
+import { classNames, useTheme } from 'shared'
 
 import './styles/index.scss'
 
 
-const App = () => {
+export const App = () => {
     const { theme, toggleTheme } = useTheme()
 
     return (
@@ -27,12 +22,10 @@ const App = () => {
 
             <React.Suspense fallback={<div>Loading...</div>}>
                 <Routes>
-                    <Route path={'/'} element={<MainPageLazy />}/>
-                    <Route path={'/about'} element={<AboutPageLazy />}/>
+                    <Route path={'/'} element={<MainPage />}/>
+                    <Route path={'/about'} element={<AboutPage />}/>
                 </Routes>
             </React.Suspense>
         </div>
     )
 }
-
-export default App
