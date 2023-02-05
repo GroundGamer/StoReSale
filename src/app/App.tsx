@@ -2,7 +2,7 @@ import React from 'react'
 
 import { AppRouter } from 'app/providers'
 
-import { Navbar } from 'widgets'
+import { Navbar, Sidebar } from 'widgets'
 
 import { classNames, useTheme } from 'shared/lib'
 
@@ -18,7 +18,11 @@ export const App = () => {
 
             <Navbar />
 
-            <AppRouter />
+            <div className={classNames('content-page')}>
+                <Sidebar />
+
+                <AppRouter />
+            </div>
 
         </div>
     )

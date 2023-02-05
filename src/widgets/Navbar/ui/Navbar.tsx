@@ -1,7 +1,5 @@
 import React from 'react'
 
-import { ThemeChooser } from 'widgets'
-
 import { AppLink } from 'shared/ui'
 
 import { APP_LINK_THEME } from 'shared/ui'
@@ -22,9 +20,6 @@ export const Navbar: React.FC<Props> = (props) => {
 
     return (
         <div className={classNames(cls.navbar, {}, [className])}>
-
-            <ThemeChooser />
-
             <div className={classNames(cls.links)}>
                 <AppLink
                     to={'/'}

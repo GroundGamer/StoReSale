@@ -4,6 +4,8 @@ import { Route, Routes } from 'react-router-dom'
 
 import { routeConfig } from 'shared/config'
 
+import { classNames } from 'shared/lib'
+
 
 export const AppRouter = () => {
     return (
@@ -13,7 +15,11 @@ export const AppRouter = () => {
                     <Route
                         key={route.path}
                         path={route.path}
-                        element={route.element}
+                        element={(
+                            <div className={classNames('page-wrapper')}>
+                                {route.element}
+                            </div>
+                        )}
                     />
                 ))}
             </Routes>

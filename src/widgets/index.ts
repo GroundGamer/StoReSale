@@ -1,3 +1,5 @@
 export { Navbar } from './Navbar'
 
-export { ThemeChooser } from './ThemeChooser'
+export { ThemeSwitcher } from './ThemeSwitcher'
+
+export { Sidebar } from './Sidebar'
