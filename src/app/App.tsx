@@ -1,8 +1,8 @@
 import React from 'react'
 
-import { Route, Link, Routes } from 'react-router-dom'
+import { Link } from 'react-router-dom'
 
-import { MainPage, AboutPage } from 'pages'
+import { AppRouter } from 'app/providers'
 
 import { classNames, useTheme } from 'shared'
 
@@ -20,12 +20,7 @@ export const App = () => {
             <Link to={'/'}>Main page</Link>
             <Link to={'/about'}>About page</Link>
 
-            <React.Suspense fallback={<div>Loading...</div>}>
-                <Routes>
-                    <Route path={'/'} element={<MainPage />}/>
-                    <Route path={'/about'} element={<AboutPage />}/>
-                </Routes>
-            </React.Suspense>
+            <AppRouter />
         </div>
     )
 }
