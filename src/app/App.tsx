@@ -11,7 +11,7 @@ import './styles/index.scss'
 
 
 export const App = () => {
-    const { theme, toggleTheme } = useTheme()
+    const { theme } = useTheme()
 
     return (
         <div className={classNames('app', {}, [theme])}>
@@ -20,7 +20,6 @@ export const App = () => {
 
             <AppRouter />
 
-            <button onClick={toggleTheme}>Toggle theme</button>
         </div>
     )
 }

@@ -1,3 +1,3 @@
-export { AppLink } from './AppLink/AppLink'
+export { AppLink, APP_LINK_THEME } from './AppLink/AppLink'
 
-export { APP_LINK_THEME } from './AppLink/AppLink'
+export { Button } from './Button/Button'
