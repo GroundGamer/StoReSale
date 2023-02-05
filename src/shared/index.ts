@@ -1,9 +1,8 @@
-export { classNames } from './lib/classNames'
+export { classNames } from './lib'
+export { useTheme } from './lib'
+export { ThemeContext, Theme, LOCAL_STORAGE_THEME_KEY } from  './lib'
 
-export { useTheme } from './lib/hooks'
+export { AppLink, APP_LINK_THEME } from './ui'
 
 
-export { ThemeContext, Theme, LOCAL_STORAGE_THEME_KEY } from  './lib/ThemeContext'
-
-
-export type { ThemeContextProps } from  './lib/ThemeContext'
+export type { ThemeContextProps } from  './lib'

@@ -1,6 +1,6 @@
 import React from 'react'
 
-import { LOCAL_STORAGE_THEME_KEY, Theme, ThemeContext } from 'shared'
+import { LOCAL_STORAGE_THEME_KEY, Theme, ThemeContext } from 'shared/lib'
 
 
 interface UseThemeResult {
