@@ -7,9 +7,6 @@ import { classNames } from 'shared/lib'
 import { Button } from 'shared/ui'
 
 
-import cls from './LangSwitcher.module.scss'
-
-
 interface Props {
     className?: string
 }
@@ -29,7 +26,7 @@ export const LangSwitcher: React.FC<Props> = (props) => {
     return (
         <Button
             onClick={toggleLang}
-            className={classNames(cls.langSwitcher, {}, [className])}
+            className={classNames('', {}, [className])}
         >
             {t('Язык')}
         </Button>
