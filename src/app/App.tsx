@@ -16,13 +16,15 @@ export const App = () => {
     return (
         <div className={classNames('app', {}, [theme])}>
 
-            <Navbar />
+            <React.Suspense fallback={''}>
+                <Navbar />
 
-            <div className={classNames('content-page')}>
-                <Sidebar />
+                <div className={classNames('content-page')}>
+                    <Sidebar />
 
-                <AppRouter />
-            </div>
+                    <AppRouter />
+                </div>
+            </React.Suspense>
 
         </div>
     )

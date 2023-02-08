@@ -1,6 +1,6 @@
 import React from 'react'
 
-import { ThemeSwitcher } from 'widgets'
+import { LangSwitcher, ThemeSwitcher } from 'features'
 
 import { classNames } from 'shared/lib'
 
@@ -31,7 +31,9 @@ export const Sidebar: React.FC<Props> = (props) => {
 
             <div className={classNames(cls.switchers)}>
                 <ThemeSwitcher />
-                {/* <LangSwitcher /> */}
+                <LangSwitcher
+                    className={cls.lang}
+                />
             </div>
         </div>
     )

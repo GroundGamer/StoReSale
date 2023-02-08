@@ -6,6 +6,9 @@ import { App } from 'app'
 import { ThemeProvider } from 'app'
 
 
+import 'shared/config/i18n/i18n'
+
+
 render(
     <BrowserRouter>
         <ThemeProvider>
