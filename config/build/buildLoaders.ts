@@ -13,7 +13,7 @@ export function buildLoaders(options: BuildOptions): Array<webpack.RuleSetRule> 
 
     const svgLoader = {
         test: /\.svg$/,
-        use: ['@svgr/webpack'],
+        use: ['@svgr/webpack']
     }
 
 
@@ -30,14 +30,14 @@ export function buildLoaders(options: BuildOptions): Array<webpack.RuleSetRule> 
                         auto: (resPath: string) => Boolean(resPath.includes('.module.')),
                         localIdentName:
                             isDev
-                            ? '[path][name]__[local]--[hash:base64:5]'
-                            : '[hash:base64:8]'
+                                ? '[path][name]__[local]--[hash:base64:5]'
+                                : '[hash:base64:8]'
                     }
                 }
             },
             // Компилирует Sass в CSS
-            "sass-loader",
-        ],
+            'sass-loader'
+        ]
     }
 
     /* Если не используем typescript - нужен babel-loader для "*.js" файлов */
@@ -52,9 +52,9 @@ export function buildLoaders(options: BuildOptions): Array<webpack.RuleSetRule> 
         test: /\.(png|jpe?g|gif|woff2|woff)$/i,
         use: [
             {
-                loader: 'file-loader',
-            },
-        ],
+                loader: 'file-loader'
+            }
+        ]
     }
     
 
@@ -62,6 +62,6 @@ export function buildLoaders(options: BuildOptions): Array<webpack.RuleSetRule> 
         fileLoader,
         svgLoader,
         typescriptLoader,
-        cssLoader,
+        cssLoader
     ]
 }
