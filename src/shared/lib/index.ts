@@ -1,4 +1,4 @@
-export { classNames } from './classNames'
+export { classNames } from './classNames/classNames'
 
 export { useTheme } from './hooks'
 
