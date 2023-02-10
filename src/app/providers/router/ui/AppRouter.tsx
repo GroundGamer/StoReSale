@@ -2,6 +2,8 @@ import React from 'react'
 
 import { Route, Routes } from 'react-router-dom'
 
+import { PageLoader } from 'widgets'
+
 import { routeConfig } from 'shared/config'
 
 import { classNames } from 'shared/lib'
@@ -9,7 +11,7 @@ import { classNames } from 'shared/lib'
 
 export const AppRouter = () => {
     return (
-        <React.Suspense fallback={<div>Loading...</div>}>
+        <React.Suspense fallback={<PageLoader />}>
             <Routes>
                 {routeConfig.map((route) => (
                     <Route
