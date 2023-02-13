@@ -1,19 +1,21 @@
 import { render } from 'react-dom'
 import { BrowserRouter } from 'react-router-dom'
 
-import { App } from 'app'
+import { App } from 'app/'
 
-import { ThemeProvider } from 'app'
+import { ThemeProvider, ErrorBoundary } from 'app/providers'
 
 
 import 'shared/config/i18n/i18n'
 
 
 render(
-    <BrowserRouter>
-        <ThemeProvider>
-            <App />
-        </ThemeProvider>
-    </BrowserRouter>,
+    <ErrorBoundary>
+        <BrowserRouter>
+            <ThemeProvider>
+                <App />
+            </ThemeProvider>
+        </BrowserRouter>
+    </ErrorBoundary>,
     document.getElementById('root')
 )
