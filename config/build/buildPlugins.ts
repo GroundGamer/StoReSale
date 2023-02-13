@@ -22,7 +22,15 @@ export function buildPlugins(options: BuildOptions): Array<webpack.WebpackPlugin
         new HtmlWebpackPlugin({
             template: html
         }),
+
+        /*
+            Плагин для отображения прогресса сборки
+        */
         new webpack.ProgressPlugin(),
+
+        /*
+            Плагин для шифровки файла css
+        */
         new MiniCssExtractPlugin({
             filename: 'css/[name].[contenthash:8].css',
             chunkFilename: 'css/[name].[contenthash:8].css'
@@ -30,14 +38,23 @@ export function buildPlugins(options: BuildOptions): Array<webpack.WebpackPlugin
         new webpack.DefinePlugin({
             __IS_DEV__: JSON.stringify(isDev)
         }),
-        new webpack.HotModuleReplacementPlugin(),
+
+        /*
+            Для анализа пакетов
+        */
         new BundleAnalyzerPlugin({
             openAnalyzer: false
         })
     ]
 
     if (isDev) {
+        /*
+            Нужен для изменения кода и для плагина ниже
+        */
         plugins.push(new ReactRefreshWebpackPlugin())
+        /*
+            Изменяет код не перезагружая страницу
+        */
         plugins.push(new webpack.HotModuleReplacementPlugin())
     }
 
