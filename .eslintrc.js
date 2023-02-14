@@ -109,5 +109,8 @@ module.exports = {
         'react/react-in-jsx-scope': 'off',
 
         'no-fallthrough': ['error', { 'commentPattern': 'break[\\s\\w]*omitted' }]
+    },
+    globals: {
+        __IS_DEV__: true
     }
 }

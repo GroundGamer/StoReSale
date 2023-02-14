@@ -4,6 +4,8 @@ import { LangSwitcher, ThemeSwitcher } from 'features'
 
 import { classNames } from 'shared/lib'
 
+import { Button } from 'shared/ui'
+
 import cls from './Sidebar.module.scss'
 
 
@@ -25,8 +27,13 @@ export const Sidebar: React.FC<Props> = (props) => {
 
 
     return (
-        <div className={classNames(cls.sidebar, { [cls.collapsed]: collapsed }, [className])}>
-            <button onClick={onToggle}>Toggle</button>
+        <div data-testid={'sidebar'} className={classNames(cls.sidebar, { [cls.collapsed]: collapsed }, [className])}>
+            <Button
+                data-testid={'sidebar-toggle'}
+                onClick={onToggle}
+            >
+                Toggle
+            </Button>
 
             <div className={classNames(cls.switchers)}>
                 <ThemeSwitcher />
