@@ -1,5 +1,7 @@
 import React from 'react'
 
+import { useTranslation } from 'react-i18next'
+
 import { AppLink } from 'shared/ui'
 
 import { APP_LINK_THEME } from 'shared/ui'
@@ -17,6 +19,8 @@ export const Navbar: React.FC<Props> = (props) => {
 
     const { className = '' } = props
 
+    const { t } = useTranslation()
+
 
     return (
         <div className={classNames(cls.navbar, {}, [className])}>
@@ -26,13 +30,13 @@ export const Navbar: React.FC<Props> = (props) => {
                     theme={APP_LINK_THEME.SECONDARY}
                     className={classNames(cls.mainLink)}
                 >
-                    Main page
+                    {t('Главная')}
                 </AppLink>
                 <AppLink
                     to={'/about'}
                     theme={APP_LINK_THEME.SECONDARY}
                 >
-                    About page
+                    {t('О сайте')}
                 </AppLink>
             </div>
         </div>
