@@ -7,6 +7,7 @@ import { classNames } from 'shared/lib'
 import { Button } from 'shared/ui'
 
 import cls from './Sidebar.module.scss'
+import { useTranslation } from 'react-i18next'
 
 
 interface Props {
@@ -16,6 +17,9 @@ interface Props {
 export const Sidebar: React.FC<Props> = (props) => {
 
     const { className = '' } = props
+
+
+    const { t } = useTranslation()
 
 
     const [collapsed, setCollapsed] = React.useState<boolean>(false)
@@ -32,7 +36,7 @@ export const Sidebar: React.FC<Props> = (props) => {
                 data-testid={'sidebar-toggle'}
                 onClick={onToggle}
             >
-                Toggle
+                {t('Переключить')}
             </Button>
 
             <div className={classNames(cls.switchers)}>
