@@ -34,11 +34,13 @@ export function buildPlugins(options: BuildOptions): Array<webpack.WebpackPlugin
         new MiniCssExtractPlugin({
             filename: 'css/[name].[contenthash:8].css',
             chunkFilename: 'css/[name].[contenthash:8].css'
+        }),
+        new webpack.DefinePlugin({
+            __IS_DEV__: JSON.stringify(isDev)
         })
     ]
 
     if (isDev) {
-        plugins.push(new webpack.DefinePlugin({ __IS_DEV__: JSON.stringify(isDev) }))
         /*
             Для анализа пакетов
         */
