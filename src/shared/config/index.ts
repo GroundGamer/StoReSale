@@ -1,0 +1,1 @@
+export { RoutePath, routeConfig, APP_ROUTES } from './routeConfig/routeConfig'

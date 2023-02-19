@@ -1,1 +1,6 @@
-export { DarkIcon, LightIcon } from './icons'
+export {
+    DarkIcon,
+    LightIcon,
+    AboutPageIcon,
+    MainPageIcon
+} from './icons'
