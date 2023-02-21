@@ -11,7 +11,7 @@ module.exports = {
         'ecmaVersion': 'latest',
         'sourceType': 'module'
     },
-    'plugins': ['react', '@typescript-eslint', 'jsdoc', 'i18next'],
+    'plugins': ['react', '@typescript-eslint', 'jsdoc', 'i18next', 'react-hooks'],
     'rules': {
         'comma-dangle': ['error', {
             'arrays': 'never',
@@ -93,7 +93,9 @@ module.exports = {
         'react/react-in-jsx-scope': 'off',
         'no-fallthrough': ['error', {
             'commentPattern': 'break[\\s\\w]*omitted'
-        }]
+        }],
+        'react-hooks/rules-of-hooks': 'error',
+        'react-hooks/exhaustive-deps': 'error'
     },
     globals: {
         __IS_DEV__: true

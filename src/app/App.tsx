@@ -7,8 +7,6 @@ import { Navbar, PageLoader, Sidebar } from 'widgets'
 import { classNames, useTheme } from 'shared/lib'
 
 
-import './styles/index.scss'
-
 
 export const App = () => {
     const { theme } = useTheme()
