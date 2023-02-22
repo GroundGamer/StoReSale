@@ -4,9 +4,9 @@ import { Route, Routes } from 'react-router-dom'
 
 import { PageLoader } from 'widgets'
 
-import { routeConfig } from 'shared/config/routeConfig/routeConfig'
-
 import { classNames } from 'shared/lib'
+
+import { routeConfig } from '../config/routeConfig'
 
 
 export const AppRouter = () => {
