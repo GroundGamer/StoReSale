@@ -20,6 +20,8 @@ const ANIMATION_DELAY = 300
 
 
 export const Modal: React.FC<Props> = (props) => {
+    const { theme } = useTheme()
+
 
     const { className = '' } = props
 
@@ -27,7 +29,6 @@ export const Modal: React.FC<Props> = (props) => {
 
     const { isOpen = false, onClose } = props
 
-    const { theme } = useTheme()
 
     const [isClosing, setIsClosing] = React.useState<boolean>(false)
 
@@ -38,10 +39,9 @@ export const Modal: React.FC<Props> = (props) => {
     const mods = React.useMemo<Record<string, boolean>>(() => {
         return {
             [cls.opened]: isOpen,
-            [cls.isClosing]: isClosing,
-            [cls[theme]]: true
+            [cls.isClosing]: isClosing
         }
-    }, [isOpen, isClosing, theme])
+    }, [isOpen, isClosing])
 
     const handleClose = React.useCallback(() => {
         if (onClose) {
@@ -82,7 +82,7 @@ export const Modal: React.FC<Props> = (props) => {
 
     return (
         <Portal>
-            <div className={classNames(cls.modal, mods, [className])}>
+            <div className={classNames(cls.modal, mods, [className, theme])}>
                 <div className={cls.overlay} onClick={handleClose}>
                     <div className={cls.content} onClick={onContentClick}>
                         {children}
