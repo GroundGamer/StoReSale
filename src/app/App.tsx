@@ -4,17 +4,13 @@ import { AppRouter } from 'app/providers'
 
 import { Navbar, PageLoader, Sidebar } from 'widgets'
 
-import { classNames, useTheme } from 'shared/lib'
+import { classNames } from 'shared/lib'
 
 
 
 export const App = () => {
-    const { theme } = useTheme()
-
-
-
     return (
-        <div className={classNames('app', {}, [theme])}>
+        <div className={classNames('app', {}, [])}>
 
             <React.Suspense fallback={<PageLoader />}>
                 <Navbar />

@@ -1,6 +1,6 @@
 import React from 'react'
 
-import { classNames, useTheme } from 'shared/lib'
+import { classNames } from 'shared/lib'
 
 import { Portal } from 'shared/ui'
 
@@ -20,7 +20,6 @@ const ANIMATION_DELAY = 300
 
 
 export const Modal: React.FC<Props> = (props) => {
-    const { theme } = useTheme()
 
 
     const { className = '' } = props
@@ -82,7 +81,7 @@ export const Modal: React.FC<Props> = (props) => {
 
     return (
         <Portal>
-            <div className={classNames(cls.modal, mods, [className, theme])}>
+            <div className={classNames(cls.modal, mods, [className])}>
                 <div className={cls.overlay} onClick={handleClose}>
                     <div className={cls.content} onClick={onContentClick}>
                         {children}
