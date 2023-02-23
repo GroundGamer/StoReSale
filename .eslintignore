@@ -1,2 +1,3 @@
 *.test.tsx
 scripts
+json-server
