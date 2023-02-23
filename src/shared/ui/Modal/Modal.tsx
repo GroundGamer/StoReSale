@@ -11,6 +11,7 @@ import cls from './Modal.module.scss'
 interface Props {
     className?: string
     children: React.ReactNode
+    lazy?: boolean
     isOpen: boolean
     onClose: () => void
 }
@@ -28,8 +29,12 @@ export const Modal: React.FC<Props> = (props) => {
 
     const { isOpen = false, onClose } = props
 
+    const { lazy } = props
+
 
     const [isClosing, setIsClosing] = React.useState<boolean>(false)
+
+    const [isMounted, setIsMounted] = React.useState<boolean>(false)
 
 
     const timerRef = React.useRef<ReturnType<typeof setTimeout>>()
@@ -77,6 +82,18 @@ export const Modal: React.FC<Props> = (props) => {
             window.removeEventListener('keydown', onKeyDown)
         }
     }, [isOpen, onKeyDown])
+
+
+    React.useEffect(() => {
+        if (isOpen) {
+            setIsMounted(true)
+        }
+    }, [isOpen])
+
+
+    if (lazy && !isMounted) {
+        return null
+    }
 
 
     return (

@@ -94,6 +94,7 @@ module.exports = {
         'no-fallthrough': ['error', {
             'commentPattern': 'break[\\s\\w]*omitted'
         }],
+        'react/display-name': ['off', { 'ignoreTranspilerName': true }],
         'react-hooks/rules-of-hooks': 'error',
         'react-hooks/exhaustive-deps': 'error'
     },

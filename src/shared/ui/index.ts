@@ -6,4 +6,6 @@ export { Loader } from './Loader/Loader'
 
 export { Modal } from './Modal/Modal'
 
+export { Input } from './Input'
+
 export { Portal } from './Portal/Portal'
