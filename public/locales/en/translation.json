@@ -2,10 +2,12 @@
     "Введите логин": "Enter login",
     "Введите пароль": "Enter password",
     "Войти": "Login",
+    "Выйти": "Logout",
     "Короткий язык": "EN",
     "Обновить страницу": "Refresh the page",
     "Переключить": "Toggle",
     "Произошла непредвиденная ошибка": "Unexpected error occurred",
     "Страница не найдена": "Page not found",
+    "Форма авторизации": "Authorization form",
     "Язык": "English"
 }

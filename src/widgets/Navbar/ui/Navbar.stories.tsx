@@ -2,7 +2,7 @@ import React from 'react'
 
 import { THEME } from 'shared/lib'
 
-import { ThemeDecorator } from 'shared/config/storybook'
+import { StoreDecorator, ThemeDecorator } from 'shared/config/storybook'
 
 
 import { Navbar } from 'widgets/Navbar'
@@ -23,11 +23,25 @@ export default {
 const Template: ComponentStory<typeof Navbar> = (args) => <Navbar {...args} />
 
 
-export const Light = Template.bind({})
-Light.args = {
-}
+export const Primary = Template.bind({})
+Primary.args = {}
+Primary.decorators = [StoreDecorator({})]
 
-export const Dark = Template.bind({})
-Dark.args = {
-}
-Dark.decorators = [ThemeDecorator(THEME.DARK)]
+
+export const PrimaryDark = Template.bind({})
+PrimaryDark.args = {}
+PrimaryDark.decorators = [StoreDecorator({}), ThemeDecorator(THEME.DARK)]
+
+
+export const IsAuth = Template.bind({})
+IsAuth.args = {}
+IsAuth.decorators = [StoreDecorator({
+    user: { authData: {}}
+})]
+
+
+export const IsAuthDark = Template.bind({})
+IsAuthDark.args = {}
+IsAuthDark.decorators = [StoreDecorator({
+    user: { authData: {}}
+}), ThemeDecorator(THEME.DARK)]

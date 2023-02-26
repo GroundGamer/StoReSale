@@ -1,9 +1,12 @@
 import React from 'react'
 
+import { useDispatch, useSelector } from 'react-redux'
 
 import { useTranslation } from 'react-i18next'
 
 import { LoginModal } from 'features/AuthByUsername'
+
+import { getUserAuthData, userActions } from 'entities/User'
 
 import { classNames } from 'shared/lib'
 import { Button, BUTTON_THEME } from 'shared/ui'
@@ -23,19 +26,43 @@ export const Navbar: React.FC<Props> = (props) => {
 
     const [isAuthModal, setIsAuthModal] = React.useState(false)
 
+
+    const authData = useSelector(getUserAuthData)
+    const dispatch = useDispatch()
+
+
     const onCloseModal = React.useCallback(() => {
         setIsAuthModal(false)
     }, [])
 
-    const onShowModal = React.useCallback(() => {
+    const onShowAuthModal = React.useCallback(() => {
         setIsAuthModal(true)
     }, [])
+
+    const onLogout = React.useCallback(() => {
+        dispatch(userActions.logout())
+    }, [dispatch])
+
+
+    if (authData) {
+        return (
+            <div className={classNames(cls.navbar, {}, [className])}>
+                <Button
+                    onClick={onLogout}
+                    theme={BUTTON_THEME.BACKGROUND_INVERTED}
+                    className={classNames(cls.links)}
+                >
+                    {t('Выйти')}
+                </Button>
+            </div>
+        )
+    }
 
 
     return (
         <div className={classNames(cls.navbar, {}, [className])}>
             <Button
-                onClick={onShowModal}
+                onClick={onShowAuthModal}
                 theme={BUTTON_THEME.BACKGROUND_INVERTED}
                 className={classNames(cls.links)}
             >

@@ -186,3 +186,20 @@ ClearDark.args = {
     theme: BUTTON_THEME.CLEAR
 }
 ClearDark.decorators = [ThemeDecorator(THEME.DARK)]
+
+
+
+export const Disabled = Template.bind({})
+Disabled.args = {
+    children: 'Text',
+    disabled: true,
+    theme: BUTTON_THEME.OUTLINE
+}
+
+export const DisabledDark = Template.bind({})
+DisabledDark.args = {
+    children: 'Text',
+    disabled: true,
+    theme: BUTTON_THEME.OUTLINE
+}
+DisabledDark.decorators = [ThemeDecorator(THEME.DARK)]

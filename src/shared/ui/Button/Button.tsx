@@ -34,17 +34,20 @@ export const Button: React.FC<Props> = (props) => {
         className = '',
         theme = '',
         square = false,
+        disabled,
         size = BUTTON_SIZE.M,
         ...otherProps
     } = props
 
     const mods: Record<string, boolean> = {
-        [cls.square]: square
+        [cls.square]: square,
+        [cls.disabled]: disabled
     }
 
 
     return (
         <button
+            disabled={disabled}
             className={classNames(
                 cls.button,
                 mods,

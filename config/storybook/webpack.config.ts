@@ -1,6 +1,6 @@
 import path from 'path'
 
-import webpack from 'webpack'
+import webpack, { DefinePlugin } from 'webpack'
 
 import { buildCssLoader } from '../build/loaders/buildCssLoader'
 import { buildSVGLoader } from '../build/loaders/buildSVGLoader'
@@ -39,6 +39,10 @@ export default (props: Props) => {
 
     config.module.rules.push(buildSVGLoader())
     config.module.rules.push(buildCssLoader(true))
+
+    config.plugins.push(new DefinePlugin({
+        __IS_DEV__: true
+    }))
 
     return config
 }

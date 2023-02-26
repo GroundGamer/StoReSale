@@ -8,4 +8,6 @@ export { Modal } from './Modal/Modal'
 
 export { Input } from './Input'
 
+export { Text, TEXT_THEME } from './Text/Text'
+
 export { Portal } from './Portal/Portal'
