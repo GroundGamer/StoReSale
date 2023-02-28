@@ -7,4 +7,4 @@ export { StoreProvider, createReduxStore } from './StoreProvider'
 export { ErrorBoundary } from './ErrorBoundary'
 
 
-export type { StateSchema } from './StoreProvider'
+export type { StateSchema, StateSchemaKey, ReduxStoreWithManager } from './StoreProvider'

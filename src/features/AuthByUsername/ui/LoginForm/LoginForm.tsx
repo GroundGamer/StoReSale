@@ -4,26 +4,46 @@ import { useDispatch, useSelector } from 'react-redux'
 
 import { useTranslation } from 'react-i18next'
 
-import { classNames } from 'shared/lib'
+import { classNames, DynamicModuleLoader } from 'shared/lib'
 import { Button, BUTTON_THEME, TEXT_THEME, Input, Text } from 'shared/ui'
 
-import { loginActions } from '../../model/slice/loginSlice'
-import { getLoginState } from '../../model/selectors/getLoginState/getLoginState'
+import { getLoginStateUsername } from '../../model/selectors/getLoginStateUsername/getLoginStateUsername'
+import { getLoginStatePassword } from '../../model/selectors/getLoginStatePassword/getLoginStatePassword'
+import { getLoginStateError } from '../../model/selectors/getLoginStateError/getLoginStateError'
+import { getLoginStateIsLoading } from '../../model/selectors/getLoginStateIsLoading/getLoginStateIsLoading'
+import { loginActions, loginReducer } from '../../model/slice/loginSlice'
 import { loginByUsername } from '../../model/services/loginByUsername/loginByUsername'
 
 
 import cls from './LoginForm.module.scss'
 
 
-interface Props {
+
+import type { DeepPartial } from '@reduxjs/toolkit'
+
+import type { ReducersList } from 'shared/lib'
+
+import type { LoginSchema } from '../../model/types/LoginSchema'
+
+
+
+const initialReducers: DeepPartial<ReducersList<LoginSchema>> = {
+    loginForm: loginReducer
+}
+
+
+export interface Props {
     className?: string
 }
 
-export const LoginForm = React.memo((props: Props) => {
+const LoginForm = React.memo((props: Props) => {
 
     const { t } = useTranslation()
 
-    const { username, password, isLoading, error } = useSelector(getLoginState)
+    const error = useSelector(getLoginStateError)
+    const isLoading = useSelector(getLoginStateIsLoading)
+    const password = useSelector(getLoginStatePassword)
+    const username = useSelector(getLoginStateUsername)
 
     const dispatch = useDispatch()
 
@@ -45,34 +65,41 @@ export const LoginForm = React.memo((props: Props) => {
 
 
     return (
-        <div className={classNames(cls.loginForm, {}, [className])}>
+        <DynamicModuleLoader<LoginSchema>
+            removeAfterUnmount
+            reducers={initialReducers as ReducersList<LoginSchema>}
+        >
+            <div className={classNames(cls.loginForm, {}, [className])}>
 
-            <Text title={t('Форма авторизации')}/>
+                <Text title={t('Форма авторизации')}/>
 
-            {error && (<Text text={error} theme={TEXT_THEME.ERROR} />)}
+                {error && (<Text text={error} theme={TEXT_THEME.ERROR} />)}
 
-            <Input
-                autoFocus
-                placeholder={t('Введите логин')}
-                value={username}
-                onChange={onChangeUsername}
-            />
+                <Input
+                    autoFocus
+                    placeholder={t('Введите логин')}
+                    value={username}
+                    onChange={onChangeUsername}
+                />
 
-            <Input
-                placeholder={t('Введите пароль')}
-                value={password}
-                onChange={onChangePassword}
-            />
+                <Input
+                    placeholder={t('Введите пароль')}
+                    value={password}
+                    onChange={onChangePassword}
+                />
 
-            <Button
-                theme={BUTTON_THEME.OUTLINE}
-                className={cls.loginBtn}
-                onClick={onLoginClick}
-                disabled={isLoading}
-            >
-                {t('Войти')}
-            </Button>
-
-        </div>
+                <Button
+                    theme={BUTTON_THEME.OUTLINE}
+                    className={cls.loginBtn}
+                    onClick={onLoginClick}
+                    disabled={isLoading}
+                >
+                    {t('Войти')}
+                </Button>
+            </div>
+        </DynamicModuleLoader>
     )
 })
+
+
+export default LoginForm

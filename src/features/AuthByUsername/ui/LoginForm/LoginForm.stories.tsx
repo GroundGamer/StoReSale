@@ -5,7 +5,7 @@ import { THEME } from 'shared/lib'
 import { ThemeDecorator, StoreDecorator } from 'shared/config/storybook'
 
 
-import { LoginForm } from './LoginForm'
+import LoginForm from './LoginForm'
 
 
 import type { ComponentMeta, ComponentStory } from '@storybook/react'

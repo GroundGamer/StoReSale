@@ -1,8 +1,8 @@
 import React from 'react'
 
-import { Modal } from 'shared/ui'
+import { Loader, Modal } from 'shared/ui'
 
-import { LoginForm } from '../LoginForm/LoginForm'
+import { LoginFormLazy } from '../LoginForm/LoginForm.lazy'
 
 
 interface Props {
@@ -25,7 +25,9 @@ export const LoginModal: React.FC<Props> = (props) => {
             isOpen={isOpen}
             onClose={onClose}
         >
-            <LoginForm/>
+            <React.Suspense fallback={<Loader />}>
+                <LoginFormLazy/>
+            </React.Suspense>
         </Modal>
     )
 }
