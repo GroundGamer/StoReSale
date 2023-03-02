@@ -1,10 +1,15 @@
 import React from 'react'
 
-import { useDispatch, useSelector } from 'react-redux'
+import { useSelector } from 'react-redux'
 
 import { useTranslation } from 'react-i18next'
 
-import { classNames, DynamicModuleLoader } from 'shared/lib'
+import { classNames } from 'shared/lib'
+
+import { DynamicModuleLoader } from 'shared/lib'
+
+import { useAppDispatch } from 'shared/lib'
+
 import { Button, BUTTON_THEME, TEXT_THEME, Input, Text } from 'shared/ui'
 
 import { getLoginStateUsername } from '../../model/selectors/getLoginStateUsername/getLoginStateUsername'
@@ -23,17 +28,16 @@ import type { DeepPartial } from '@reduxjs/toolkit'
 
 import type { ReducersList } from 'shared/lib'
 
-import type { LoginSchema } from '../../model/types/LoginSchema'
 
 
-
-const initialReducers: DeepPartial<ReducersList<LoginSchema>> = {
+const initialReducers: DeepPartial<ReducersList> = {
     loginForm: loginReducer
 }
 
 
 export interface Props {
     className?: string
+    onSuccess: () => void
 }
 
 const LoginForm = React.memo((props: Props) => {
@@ -45,10 +49,12 @@ const LoginForm = React.memo((props: Props) => {
     const password = useSelector(getLoginStatePassword)
     const username = useSelector(getLoginStateUsername)
 
-    const dispatch = useDispatch()
+    const dispatch = useAppDispatch()
 
 
     const { className = '' } = props
+
+    const { onSuccess } = props
 
 
     const onChangeUsername = React.useCallback((value: string) => {
@@ -59,15 +65,19 @@ const LoginForm = React.memo((props: Props) => {
         dispatch(loginActions.setPassword(value))
     }, [dispatch])
 
-    const onLoginClick = React.useCallback(() => {
-        dispatch(loginByUsername({ username, password }))
-    }, [dispatch, username, password])
+    const onLoginClick = React.useCallback(async () => {
+        const result = await dispatch(loginByUsername({ username, password }))
+
+        if (result.meta.requestStatus === 'fulfilled') {
+            onSuccess?.()
+        }
+    }, [onSuccess, dispatch, username, password])
 
 
     return (
-        <DynamicModuleLoader<LoginSchema>
+        <DynamicModuleLoader
             removeAfterUnmount
-            reducers={initialReducers as ReducersList<LoginSchema>}
+            reducers={initialReducers as ReducersList}
         >
             <div className={classNames(cls.loginForm, {}, [className])}>
 

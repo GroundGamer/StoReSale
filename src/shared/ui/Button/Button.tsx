@@ -20,13 +20,14 @@ export enum BUTTON_SIZE {
 }
 
 interface Props extends React.ButtonHTMLAttributes<HTMLButtonElement>{
-    className?: string,
-    theme?: BUTTON_THEME,
-    square?: boolean,
+    className?: string
+    theme?: BUTTON_THEME
+    square?: boolean
     size?: BUTTON_SIZE
+    children: React.ReactNode
 }
 
-export const Button: React.FC<Props> = (props) => {
+export const Button = React.memo((props: Props) => {
 
     const { children } = props
 
@@ -62,4 +63,4 @@ export const Button: React.FC<Props> = (props) => {
             {children}
         </button>
     )
-}
+})

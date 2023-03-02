@@ -13,7 +13,7 @@ interface Props {
     short?: boolean
 }
 
-export const LangSwitcher: React.FC<Props> = (props) => {
+export const LangSwitcher = React.memo((props: Props) => {
 
     const { t, i18n } = useTranslation()
 
@@ -36,4 +36,4 @@ export const LangSwitcher: React.FC<Props> = (props) => {
             {short ? t('Короткий язык') : t('Язык')}
         </Button>
     )
-}
+})

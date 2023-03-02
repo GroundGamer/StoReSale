@@ -5,6 +5,7 @@ import type { AnyAction, Reducer, ReducersMapObject, EnhancedStore } from '@redu
 import type { LoginSchema } from 'features/AuthByUsername'
 
 import type { CounterSchema } from 'entities/Counter'
+import type { ProfileSchema } from 'entities/Profile'
 import type { UserSchema } from 'entities/User'
 
 
@@ -12,6 +13,7 @@ export interface StateSchema {
     counter: CounterSchema
     user: UserSchema
 
+    profile?: ProfileSchema
     loginForm?: LoginSchema
 }
 export type StateSchemaKey = keyof StateSchema

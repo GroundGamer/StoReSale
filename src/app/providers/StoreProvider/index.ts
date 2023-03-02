@@ -3,4 +3,10 @@ export { StoreProvider } from './ui/StoreProvider'
 export { createReduxStore } from './config/store'
 
 
-export type { StateSchema, StateSchemaKey, ReduxStoreWithManager } from './config/StateSchema'
+export type {
+    ReduxStoreWithManager,
+    StateSchema,
+    StateSchemaKey
+} from './config/StateSchema'
+
+export type { AppDispatch } from './config/store'

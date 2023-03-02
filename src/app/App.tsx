@@ -1,7 +1,5 @@
 import React from 'react'
 
-import { useDispatch } from 'react-redux'
-
 import { AppRouter } from 'app/providers'
 
 import { Navbar, PageLoader, Sidebar } from 'widgets'
@@ -10,12 +8,13 @@ import { userActions } from 'entities/User'
 
 import { classNames } from 'shared/lib'
 
+import { useAppDispatch } from 'shared/lib'
 
 
 export const App = () => {
 
 
-    const dispatch = useDispatch()
+    const dispatch = useAppDispatch()
 
 
     React.useEffect(() => {

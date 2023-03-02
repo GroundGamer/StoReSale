@@ -5,7 +5,7 @@ import { THEME } from 'shared/lib'
 import { ThemeDecorator } from 'shared/config/storybook'
 
 
-import AboutPage from 'pages/AboutPage/ui/AboutPage'
+import AboutPage from './AboutPage'
 
 
 import type { ComponentMeta, ComponentStory } from '@storybook/react'

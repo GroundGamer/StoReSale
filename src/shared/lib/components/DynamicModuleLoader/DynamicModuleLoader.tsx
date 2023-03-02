@@ -1,29 +1,29 @@
 import React from 'react'
 
-import { useDispatch, useStore } from 'react-redux'
+import { useStore } from 'react-redux'
+
+import { useAppDispatch } from 'shared/lib'
 
 
-import type { Reducer } from 'react'
-
-import type { AnyAction } from '@reduxjs/toolkit'
+import type { Reducer } from '@reduxjs/toolkit'
 
 import type { ReduxStoreWithManager, StateSchemaKey } from 'app/providers'
 
 
-export type ReducersList<Schema> = {
-    [name in StateSchemaKey]: Reducer<Schema, AnyAction>
+export type ReducersList = {
+    [name in StateSchemaKey]?: Reducer
 }
 
-type ReducersListEntry<Schema> = [StateSchemaKey, Reducer<Schema, AnyAction>]
+type ReducersListEntry = [StateSchemaKey, Reducer]
 
-interface Props <Schema>{
+interface Props {
     children: React.ReactElement
-    reducers: ReducersList<Schema>
+    reducers: ReducersList
     removeAfterUnmount?: boolean
 }
 
-export function DynamicModuleLoader<Schema = StateSchemaKey>(props: Props<Schema>) {
-    const dispatch = useDispatch()
+export function DynamicModuleLoader(props: Props) {
+    const dispatch = useAppDispatch()
 
     const store = useStore() as ReduxStoreWithManager
 
@@ -36,7 +36,7 @@ export function DynamicModuleLoader<Schema = StateSchemaKey>(props: Props<Schema
 
 
     React.useEffect(() => {
-        Object.entries(reducers).forEach(([name, reducer]: ReducersListEntry<Schema>) => {
+        Object.entries(reducers).forEach(([name, reducer]: ReducersListEntry) => {
             store.reducerManager.add(name, reducer)
 
             dispatch({ type: `@INIT ${name} reducer` })
@@ -44,7 +44,7 @@ export function DynamicModuleLoader<Schema = StateSchemaKey>(props: Props<Schema
 
         return () => {
             if (removeAfterUnmount) {
-                Object.entries(reducers).forEach(([name]: ReducersListEntry<Schema>) => {
+                Object.entries(reducers).forEach(([name]: ReducersListEntry) => {
                     store.reducerManager.remove(name)
 
                     dispatch({ type: `@DESTROY ${name} reducer` })

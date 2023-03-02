@@ -1,4 +1,9 @@
-import { AboutPage, MainPage, NotFoundPage } from 'pages'
+import {
+    AboutPage,
+    MainPage,
+    ProfilePage,
+    NotFoundPage
+} from 'pages'
 
 import { RoutePath } from 'shared/config'
 
@@ -13,6 +18,10 @@ export const routeConfig: Array<RouteProps> = [
     {
         path: RoutePath.about,
         element: <AboutPage />
+    },
+    {
+        path: RoutePath.profile,
+        element: <ProfilePage />
     },
     {
         path: RoutePath.not_found,

@@ -2,5 +2,6 @@ export {
     DarkIcon,
     LightIcon,
     AboutPageIcon,
-    MainPageIcon
+    MainPageIcon,
+    ProfileIcon
 } from './icons'

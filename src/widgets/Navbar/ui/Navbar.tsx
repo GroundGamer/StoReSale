@@ -1,6 +1,6 @@
 import React from 'react'
 
-import { useDispatch, useSelector } from 'react-redux'
+import { useSelector } from 'react-redux'
 
 import { useTranslation } from 'react-i18next'
 
@@ -9,6 +9,9 @@ import { LoginModal } from 'features/AuthByUsername'
 import { getUserAuthData, userActions } from 'entities/User'
 
 import { classNames } from 'shared/lib'
+
+import { useAppDispatch } from 'shared/lib'
+
 import { Button, BUTTON_THEME } from 'shared/ui'
 
 import cls from './Navbar.module.scss'
@@ -18,7 +21,7 @@ interface Props {
     className?: string
 }
 
-export const Navbar: React.FC<Props> = (props) => {
+export const Navbar = React.memo((props: Props) => {
 
     const { className = '' } = props
 
@@ -28,7 +31,7 @@ export const Navbar: React.FC<Props> = (props) => {
 
 
     const authData = useSelector(getUserAuthData)
-    const dispatch = useDispatch()
+    const dispatch = useAppDispatch()
 
 
     const onCloseModal = React.useCallback(() => {
@@ -77,4 +80,4 @@ export const Navbar: React.FC<Props> = (props) => {
             )}
         </div>
     )
-}
+})

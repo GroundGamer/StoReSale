@@ -18,7 +18,7 @@ interface Props {
     theme?: TEXT_THEME
 }
 
-export const Text: React.FC<Props> = (props) => {
+export const Text = React.memo((props: Props) => {
 
     const { className = '', theme = TEXT_THEME.PRIMARY } = props
 
@@ -34,4 +34,4 @@ export const Text: React.FC<Props> = (props) => {
             {text && <p className={cls.paragraph}>{text}</p>}
         </div>
     )
-}
+})

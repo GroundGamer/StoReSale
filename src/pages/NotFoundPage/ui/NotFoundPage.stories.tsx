@@ -5,7 +5,7 @@ import { THEME } from 'shared/lib'
 import { ThemeDecorator } from 'shared/config/storybook'
 
 
-import { NotFoundPage } from 'pages/NotFoundPage'
+import { NotFoundPage } from './NotFoundPage'
 
 
 import type { ComponentMeta, ComponentStory } from '@storybook/react'

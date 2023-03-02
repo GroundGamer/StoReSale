@@ -1,12 +1,10 @@
 export { classNames } from './classNames/classNames'
 
-export { useTheme } from './hooks'
+export { useTheme, useAppDispatch } from './hooks'
 
 export { DynamicModuleLoader } from './components/DynamicModuleLoader/DynamicModuleLoader'
 
 export { ThemeContext, THEME, LOCAL_STORAGE_THEME_KEY } from './ThemeContext'
-
-
 
 
 export type { ThemeContextProps } from './ThemeContext'

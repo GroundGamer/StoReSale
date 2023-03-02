@@ -19,6 +19,7 @@ export enum APP_LINK_THEME {
 interface Props extends LinkProps {
     className?: string
     theme?: APP_LINK_THEME
+    children: React.ReactNode
 }
 
 export const AppLink: React.FC<Props> = (props) => {

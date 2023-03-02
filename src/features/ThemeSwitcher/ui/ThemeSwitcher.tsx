@@ -11,7 +11,7 @@ interface Props {
     className?: string
 }
 
-export const ThemeSwitcher: React.FC<Props> = (props) => {
+export const ThemeSwitcher = React.memo((props: Props) => {
 
     const { theme, toggleTheme } = useTheme()
 
@@ -28,4 +28,4 @@ export const ThemeSwitcher: React.FC<Props> = (props) => {
             {theme === THEME.DARK ? <DarkIcon /> : <LightIcon />}
         </Button>
     )
-}
+})

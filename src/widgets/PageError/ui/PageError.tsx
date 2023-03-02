@@ -13,7 +13,7 @@ interface Props {
     className?: string
 }
 
-export const PageError: React.FC<Props> = (props) => {
+export const PageError = React.memo((props: Props) => {
 
     const { className = '' } = props
 
@@ -33,4 +33,4 @@ export const PageError: React.FC<Props> = (props) => {
             </Button>
         </div>
     )
-}
+})
