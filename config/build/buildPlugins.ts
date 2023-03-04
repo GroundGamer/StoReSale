@@ -13,7 +13,7 @@ import type { BuildOptions } from './types/config'
 
 
 export function buildPlugins(options: BuildOptions): Array<webpack.WebpackPluginInstance> {
-    const { paths, isDev } = options
+    const { paths, isDev, apiUrl } = options
 
     const { html } = paths
 
@@ -36,7 +36,8 @@ export function buildPlugins(options: BuildOptions): Array<webpack.WebpackPlugin
             chunkFilename: 'css/[name].[contenthash:8].css'
         }),
         new webpack.DefinePlugin({
-            __IS_DEV__: JSON.stringify(isDev)
+            __IS_DEV__: JSON.stringify(isDev),
+            __API__: JSON.stringify(apiUrl)
         })
     ]
 

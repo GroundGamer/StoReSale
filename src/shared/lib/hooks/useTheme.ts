@@ -14,13 +14,13 @@ export const useTheme = (): UseThemeResult => {
     const toggleTheme = () => {
         const formedTheme = theme === THEME.DARK ? THEME.LIGHT : THEME.DARK
 
-        setTheme(formedTheme)
+        setTheme?.(formedTheme)
         document.body.className = formedTheme
         localStorage.setItem(LOCAL_STORAGE_THEME_KEY, formedTheme)
     }
 
     return {
-        theme,
+        theme: theme || THEME.LIGHT,
         toggleTheme
     }
 }

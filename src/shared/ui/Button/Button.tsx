@@ -6,6 +6,9 @@ import { classNames } from 'shared/lib'
 import cls from './Button.module.scss'
 
 
+import type { Mods } from 'shared/lib/classNames/classNames'
+
+
 export enum BUTTON_THEME {
     CLEAR = 'clear',
     OUTLINE = 'outline',
@@ -33,17 +36,19 @@ export const Button = React.memo((props: Props) => {
 
     const {
         className = '',
-        theme = '',
+        theme = BUTTON_THEME.OUTLINE,
         square = false,
-        disabled,
+        disabled = false,
         size = BUTTON_SIZE.M,
         ...otherProps
     } = props
-
-    const mods: Record<string, boolean> = {
-        [cls.square]: square,
-        [cls.disabled]: disabled
-    }
+    
+    const mods = React.useMemo<Mods>(() => {
+        return {
+            [cls.square]: square,
+            [cls.disabled]: disabled
+        }
+    }, [disabled, square])
 
 
     return (

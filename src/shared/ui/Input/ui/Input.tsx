@@ -10,9 +10,9 @@ type HTMLInputProps = Omit<React.InputHTMLAttributes<HTMLInputElement>, 'value' 
 
 interface Props extends HTMLInputProps {
     className?: string
-    value: string
+    value: string | undefined
     autoFocus?: boolean
-    onChange: (value: string) => void
+    onChange?: (value: string) => void
 }
 
 export const Input = React.memo((props: Props) => {

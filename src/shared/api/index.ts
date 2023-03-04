@@ -1,0 +1,1 @@
+export { $API, isAxiosError } from './api'

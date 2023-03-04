@@ -30,7 +30,12 @@ export function buildLoaders(options: BuildOptions): Array<webpack.RuleSetRule> 
     /* Если не используем typescript - нужен babel-loader для "*.js" файлов */
     const typescriptLoader = {
         test: /\.tsx?$/,
-        use: 'ts-loader',
+        use: [{
+            loader: 'ts-loader'
+            /*options: {
+                transpileOnly: true
+            }*/
+        }],
         exclude: /node_modules/
     }
 

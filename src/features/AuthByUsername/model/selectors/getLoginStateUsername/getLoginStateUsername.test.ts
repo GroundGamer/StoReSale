@@ -1,9 +1,8 @@
 import { getLoginStateUsername } from './getLoginStateUsername'
 
 
-import { DeepPartial } from '@reduxjs/toolkit'
 
-import { StateSchema } from 'app/providers'
+import type { StateSchema } from 'app/providers'
 
 
 describe('getLoginStateUsername', () => {

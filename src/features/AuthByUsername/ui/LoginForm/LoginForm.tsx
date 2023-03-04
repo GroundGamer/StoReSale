@@ -24,7 +24,6 @@ import cls from './LoginForm.module.scss'
 
 
 
-import type { DeepPartial } from '@reduxjs/toolkit'
 
 import type { ReducersList } from 'shared/lib'
 

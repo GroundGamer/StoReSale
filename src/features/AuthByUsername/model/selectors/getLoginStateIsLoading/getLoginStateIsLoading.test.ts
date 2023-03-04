@@ -1,9 +1,8 @@
 import { getLoginStateIsLoading } from './getLoginStateIsLoading'
 
 
-import { DeepPartial } from '@reduxjs/toolkit'
 
-import { StateSchema } from 'app/providers'
+import type { StateSchema } from 'app/providers'
 
 
 describe('getLoginStateIsLoading', () => {

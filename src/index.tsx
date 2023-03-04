@@ -11,14 +11,14 @@ import 'app/styles/index.scss'
 
 
 render(
-    <StoreProvider>
-        <ErrorBoundary>
-            <BrowserRouter>
+    <ErrorBoundary>
+        <BrowserRouter>
+            <StoreProvider>
                 <ThemeProvider>
                     <App />
                 </ThemeProvider>
-            </BrowserRouter>
-        </ErrorBoundary>
-    </StoreProvider>,
+            </StoreProvider>
+        </BrowserRouter>
+    </ErrorBoundary>,
     document.getElementById('root')
 )

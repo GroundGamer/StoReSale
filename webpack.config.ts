@@ -8,6 +8,8 @@ import { buildWebpackConfig } from './config/build/buildWebpackConfig'
 import type { BuildEnv, BuildPaths } from './config/build/types/config'
 
 
+
+
 export default (env: BuildEnv) => {
     const paths: BuildPaths = {
         entry: path.resolve(__dirname, 'src', 'index.tsx'),
@@ -22,11 +24,14 @@ export default (env: BuildEnv) => {
 
     const PORT = env.port || 3000
 
+    const apiUrl = env.apiUrl || 'http://localhost:3001'
+
     const config: webpack.Configuration = buildWebpackConfig({
         mode,
         paths,
         isDev,
-        port: PORT
+        port: PORT,
+        apiUrl
     })
 
     return config

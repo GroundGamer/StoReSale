@@ -99,6 +99,7 @@ module.exports = {
         'react-hooks/exhaustive-deps': 'error'
     },
     globals: {
+        __API__: true,
         __IS_DEV__: true
     }
 }
