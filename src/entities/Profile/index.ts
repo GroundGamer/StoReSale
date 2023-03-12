@@ -4,6 +4,8 @@ export { fetchProfileData } from './module/services/fetchProfileData/fetchProfil
 
 export { updateProfileData } from './module/services/updateProfileData/updateProfileData'
 
+export { validateProfileData } from './module/services/validateProfileData/validateProfileData'
+
 export { ProfileCard } from './ui/ProfileCard/ProfileCard'
 
 export {
@@ -11,9 +13,11 @@ export {
     getProfileError,
     getProfileReadOnly,
     getProfileData,
-    getProfileForm
+    getProfileForm,
+    getProfileValidateErrors
 } from './module/selectors'
 
+export { VALIDATE_PROFILE_ERROR } from './module/types/Profile'
 
 export type {
     Profile,

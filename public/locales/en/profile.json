@@ -1,4 +1,9 @@
 {
+    "Серверная ошибка при сохранении": "Server error on save",
+    "Никнейм обязателен":"Nickname required",
+    "Данные не указаны": "Data not specified",
+    "Имя и фамилия обязяательны":"First and last name are required",
+    "Неккоректный возраст": "Incorrect age",
     "Ваш возраст": "Your age",
     "Ваш аватар": "Your avatar",
     "Ваш город": "Your city",

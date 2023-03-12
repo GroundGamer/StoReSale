@@ -27,6 +27,7 @@ export const profileSlice = createSlice({
         },
         cancelEdit: (state) => {
             state.readonly = true
+            state.validateErrors = undefined
             state.form = state.data
         },
         updateProfile: (state, action: PayloadAction<DataWrapperInput<KeyProfile, string | number>>) => {
@@ -40,28 +41,28 @@ export const profileSlice = createSlice({
     },
     extraReducers: (builder) => {
         builder.addCase(fetchProfileData.pending, (state) => {
-            state.error = ''
+            state.error = undefined
             state.isLoading = true
         }).addCase(fetchProfileData.fulfilled, (state, action: PayloadAction<Profile>) => {
             state.isLoading = false
-            state.error = ''
+            state.error = undefined
             state.data = action.payload
             state.form = action.payload
         }).addCase(fetchProfileData.rejected, (state, action) => {
             state.isLoading = false
             state.error = action.payload
         }).addCase(updateProfileData.pending, (state) => {
-            state.error = ''
+            state.validateErrors = undefined
             state.isLoading = true
         }).addCase(updateProfileData.fulfilled, (state, action: PayloadAction<Profile>) => {
             state.isLoading = false
-            state.error = ''
+            state.validateErrors = undefined
             state.data = action.payload
             state.form = action.payload
             state.readonly = true
         }).addCase(updateProfileData.rejected, (state, action) => {
             state.isLoading = false
-            state.error = action.payload
+            state.validateErrors = action.payload
         })
     }
 })
