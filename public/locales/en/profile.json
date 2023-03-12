@@ -1,3 +1,15 @@
 {
-  "Профиль": "Profile page"
+    "Ваш возраст": "Your age",
+    "Ваш аватар": "Your avatar",
+    "Ваш город": "Your city",
+    "Ваш никнейм": "Your nickname",
+    "Ваша фамилия": "Your last name",
+    "Ваше имя": "Your name",
+    "Выбранная валюта": "Selected currency",
+    "Выбранная страна": "Selected country",
+    "Отменить": "Cancel",
+    "Произошла ошибка при загрузке профиля": "An error occurred while loading the profile",
+    "Профиль": "Profile page",
+    "Редактировать": "Edit",
+    "Сохранить": "Save"
 }

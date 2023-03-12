@@ -11,16 +11,21 @@ import cls from './SidebarItem.module.scss'
 
 
 import type { SidebarItemType } from 'widgets/Sidebar/model/item'
+import { useSelector } from 'react-redux'
+import { getUserAuthData } from 'entities/User'
 
 
 interface Props {
     item: SidebarItemType
-    collapsed: boolean
+    collapsed: boolean,
+    authOnly?: boolean
 }
 
 export const SidebarItem = React.memo((props: Props) => {
 
     const { t } = useTranslation()
+
+    const isAuth = useSelector(getUserAuthData)
 
 
     const { item } = props
@@ -33,6 +38,11 @@ export const SidebarItem = React.memo((props: Props) => {
 
 
     const { collapsed } = props
+
+
+    if (item.authOnly && !isAuth) {
+        return null
+    }
 
 
     return (

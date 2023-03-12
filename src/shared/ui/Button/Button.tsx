@@ -12,6 +12,7 @@ import type { Mods } from 'shared/lib/classNames/classNames'
 export enum BUTTON_THEME {
     CLEAR = 'clear',
     OUTLINE = 'outline',
+    OUTLINE_RED = 'outline_red',
     BACKGROUND = 'background',
     BACKGROUND_INVERTED = 'backgroundInverted',
 }

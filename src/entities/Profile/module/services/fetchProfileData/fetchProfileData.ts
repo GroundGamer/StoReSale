@@ -1,6 +1,6 @@
 import { createAsyncThunk } from '@reduxjs/toolkit'
 
-import { isAxiosError } from 'shared/api'
+import { getAPIErrorMessage } from 'shared/lib/errors'
 
 
 import type { ThunkApiConfig } from 'app/providers/StoreProvider'
@@ -18,19 +18,7 @@ export const fetchProfileData = createAsyncThunk<Profile, void, ThunkApiConfig<s
 
             return response.data
         } catch (error: unknown) {
-            let messageError = ''
-
-            if (isAxiosError(error)) {
-                console.log(error)
-
-                const { response } = error
-                const { data } = response || {}
-                const { message } = data || {}
-
-                messageError = message
-            }
-
-            return rejectWithValue(messageError)
+            return rejectWithValue(getAPIErrorMessage(error))
         }
     }
 )

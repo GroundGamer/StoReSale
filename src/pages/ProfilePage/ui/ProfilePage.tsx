@@ -1,13 +1,30 @@
 import React from 'react'
 
-import { classNames, useAppDispatch } from 'shared/lib'
+import { useSelector } from 'react-redux'
+
+import {
+    fetchProfileData,
+    ProfileCard,
+    profileReducer,
+    getProfileIsLoading,
+    getProfileError,
+    profileActions,
+    getProfileReadOnly,
+    getProfileForm
+} from 'entities/Profile'
+
+import { classNames } from 'shared/lib'
 
 import { DynamicModuleLoader } from 'shared/lib'
 
-import { fetchProfileData, ProfileCard, profileReducer } from 'entities/Profile'
+import { useWrapperInput, useAppDispatch } from 'shared/lib'
+
+import { ProfilePageHeader } from './ProfilePageHeader/ProfilePageHeader'
 
 
 import type { ReducersList } from 'shared/lib'
+
+import type { KeyProfile } from 'entities/Profile'
 
 
 const reducers: ReducersList = {
@@ -23,7 +40,29 @@ const ProfilePage: React.FC<Props> = (props) => {
 
     const dispatch = useAppDispatch()
 
+    const formData = useSelector(getProfileForm)
+    const isLoading = useSelector(getProfileIsLoading)
+    const error = useSelector(getProfileError)
+    const readonly = useSelector(getProfileReadOnly)
+
+    const {
+        handleInputStringWrapper,
+        handleInputNumberWrapper
+    } = useWrapperInput<KeyProfile>({ action: profileActions.updateProfile })
+
     const { className = '' } = props
+
+
+
+    const dataToCard = React.useMemo(() => {
+        return {
+            isLoading,
+            error,
+            readonly,
+            handleInputStringWrapper,
+            handleInputNumberWrapper
+        }
+    }, [error, handleInputStringWrapper, handleInputNumberWrapper, isLoading, readonly])
 
 
     React.useEffect(() => {
@@ -35,7 +74,13 @@ const ProfilePage: React.FC<Props> = (props) => {
     return (
         <DynamicModuleLoader reducers={reducers} removeAfterUnmount>
             <div className={classNames('', {}, [className])}>
-                <ProfileCard />
+
+                <ProfilePageHeader />
+
+                <ProfileCard
+                    {...dataToCard}
+                    data={formData}
+                />
             </div>
         </DynamicModuleLoader>
     )

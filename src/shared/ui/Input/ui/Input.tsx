@@ -1,18 +1,20 @@
 import React from 'react'
 
 import { classNames } from 'shared/lib'
+import { Mods } from 'shared/lib/classNames/classNames'
 
 
 import cls from './Input.module.scss'
 
 
-type HTMLInputProps = Omit<React.InputHTMLAttributes<HTMLInputElement>, 'value' | 'onChange' | 'autoFocus'>
+type HTMLInputProps = Omit<React.InputHTMLAttributes<HTMLInputElement>, 'value' | 'onChange' | 'autoFocus' | 'readOnly'>
 
 interface Props extends HTMLInputProps {
     className?: string
-    value: string | undefined
+    value: string | number | undefined
     autoFocus?: boolean
     onChange?: (value: string) => void
+    readOnly?: boolean
 }
 
 export const Input = React.memo((props: Props) => {
@@ -25,6 +27,7 @@ export const Input = React.memo((props: Props) => {
         onChange,
         placeholder,
         autoFocus,
+        readOnly,
         ...otherProps
     } = props
 
@@ -34,6 +37,16 @@ export const Input = React.memo((props: Props) => {
     const [isFocused, setIsFocused] = React.useState(false)
 
     const [caretPosition, setCaretPosition] = React.useState(0)
+
+
+    const mods = React.useMemo<Mods>(() => {
+        return {
+            [cls.readonly]: readOnly
+        }
+    }, [readOnly])
+
+
+    const isCaretVisible = React.useMemo(() => isFocused && !readOnly, [isFocused, readOnly])
 
 
     const onChangeHandler = (event: React.ChangeEvent<HTMLInputElement>) => {
@@ -70,16 +83,17 @@ export const Input = React.memo((props: Props) => {
 
 
     return (
-        <div className={classNames(cls.inputWrapper, {}, [className])}>
+        <div className={classNames(cls.inputWrapper, mods, [className])}>
 
             {placeholder && (
                 <div className={cls.placeholder}>
-                    {`${placeholder}>`}
+                    {`${placeholder}: =>`}
                 </div>
             )}
 
             <div className={cls.caretWrapper}>
                 <input
+                    readOnly={readOnly}
                     ref={refInput}
                     type={type}
                     value={value}
@@ -90,7 +104,7 @@ export const Input = React.memo((props: Props) => {
                     onSelect={onSelect}
                     {...otherProps}
                 />
-                {isFocused && (
+                {isCaretVisible && (
                     <span
                         className={cls.caret}
                         style={{ left: `${caretPosition * 9}px` }}
