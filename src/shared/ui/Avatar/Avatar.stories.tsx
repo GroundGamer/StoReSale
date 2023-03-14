@@ -3,7 +3,7 @@ import React from 'react'
 
 import { Avatar } from './Avatar'
 
-import AvatarImg from './test_avatar.jpg'
+import AvatarImg from '../../assets/tests/test_avatar.jpg'
 
 
 import type { ComponentMeta, ComponentStory } from '@storybook/react'

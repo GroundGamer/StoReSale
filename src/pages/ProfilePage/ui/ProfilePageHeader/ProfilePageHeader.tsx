@@ -37,7 +37,9 @@ export const ProfilePageHeader = React.memo((props: Props) => {
     }
 
     const handleSaveProfile = () => {
-        dispatch(updateProfileData())
+        if (__PROJECT__ !== 'storybook') {
+            dispatch(updateProfileData())
+        }
     }
 
 

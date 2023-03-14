@@ -87,7 +87,7 @@ export const Input = React.memo((props: Props) => {
 
             {placeholder && (
                 <div className={cls.placeholder}>
-                    {`${placeholder}: =>`}
+                    {`${placeholder}:>`}
                 </div>
             )}
 

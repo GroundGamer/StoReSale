@@ -11,6 +11,9 @@ import ProfilePage from './ProfilePage'
 import type { ComponentMeta, ComponentStory } from '@storybook/react'
 
 
+import { profileData } from 'entities/Profile/__mocks__/profileData'
+
+
 export default {
     title: 'pages/ProfilePage',
     component: ProfilePage,
@@ -25,8 +28,16 @@ const Template: ComponentStory<typeof ProfilePage> = (args) => <ProfilePage {...
 
 export const Primary = Template.bind({})
 Primary.args = {}
-Primary.decorators = [StoreDecorator({})]
+Primary.decorators = [StoreDecorator({
+    profile: {
+        form: profileData
+    }
+})]
 
 export const PrimaryDark = Template.bind({})
 PrimaryDark.args = {}
-PrimaryDark.decorators = [ThemeDecorator(THEME.DARK), StoreDecorator({})]
+PrimaryDark.decorators = [ThemeDecorator(THEME.DARK), StoreDecorator({
+    profile: {
+        form: profileData
+    }
+})]
