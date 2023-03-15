@@ -44,13 +44,13 @@ export function buildPlugins(options: BuildOptions): Array<webpack.WebpackPlugin
 
     if (isDev) {
         /*
-            Для анализа пакетов
-        */
-        plugins.push(new BundleAnalyzerPlugin({ openAnalyzer: false }))
-        /*
             Нужен для изменения кода и для плагина ниже
         */
         plugins.push(new ReactRefreshWebpackPlugin())
+        /*
+            Для анализа пакетов
+        */
+        plugins.push(new BundleAnalyzerPlugin({ openAnalyzer: false }))
         /*
             Изменяет код не перезагружая страницу
         */
