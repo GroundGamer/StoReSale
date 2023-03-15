@@ -12,7 +12,27 @@ export const useTheme = (): UseThemeResult => {
     const { theme, setTheme } = React.useContext(ThemeContext)
 
     const toggleTheme = () => {
-        const formedTheme = theme === THEME.DARK ? THEME.LIGHT : THEME.DARK
+        let formedTheme: THEME
+
+        switch (theme) {
+            case THEME.DARK:
+                formedTheme = THEME.LIGHT
+
+                break
+
+            case THEME.LIGHT:
+                formedTheme = THEME.ORANGE
+
+                break
+
+            case THEME.ORANGE:
+                formedTheme = THEME.DARK
+
+                break
+
+            default:
+                formedTheme = THEME.LIGHT
+        }
 
         setTheme?.(formedTheme)
         document.body.className = formedTheme
