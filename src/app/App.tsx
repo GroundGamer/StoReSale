@@ -1,10 +1,12 @@
 import React from 'react'
 
+import { useSelector } from 'react-redux'
+
 import { AppRouter } from 'app/providers'
 
 import { Navbar, PageLoader, Sidebar } from 'widgets'
 
-import { userActions } from 'entities/User'
+import { userActions, getUserMounted } from 'entities/User'
 
 import { classNames } from 'shared/lib'
 
@@ -13,6 +15,7 @@ import { useAppDispatch } from 'shared/lib'
 
 export const App = () => {
 
+    const mountedUserData = useSelector(getUserMounted)
 
     const dispatch = useAppDispatch()
 
@@ -33,7 +36,7 @@ export const App = () => {
                 <div className={classNames('content-page')}>
                     <Sidebar />
 
-                    <AppRouter />
+                    {mountedUserData && (<AppRouter />)}
                 </div>
             </React.Suspense>
 

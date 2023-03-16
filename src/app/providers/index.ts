@@ -1,6 +1,6 @@
 export { ThemeProvider } from './ThemeProvider'
 
-export { AppRouter } from './router'
+export { AppRouter, RequireAuth } from './router'
 
 export { StoreProvider, createReduxStore } from './StoreProvider'
 
