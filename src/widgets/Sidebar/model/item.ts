@@ -1,6 +1,6 @@
 import React from 'react'
 
-import { AboutPageIcon, MainPageIcon, ProfileIcon } from 'shared/assets'
+import { AboutPageIcon, MainPageIcon, ProfileIcon, ArticleIcon } from 'shared/assets'
 
 import { RoutePath } from 'shared/config'
 
@@ -27,6 +27,12 @@ export const sidebarItemsList: Array<SidebarItemType> = [
         path: RoutePath.profile,
         Icon: ProfileIcon,
         text: 'Профиль',
+        authOnly: true
+    },
+    {
+        path: RoutePath.articles,
+        Icon: ArticleIcon,
+        text: 'Статьи',
         authOnly: true
     }
 ]

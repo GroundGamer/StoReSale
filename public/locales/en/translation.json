@@ -1,9 +1,9 @@
 {
-    "Выбранная валюта": "Selected currency",
-    "Выбранная страна": "Selected country",
     "Введите логин": "Enter login",
     "Введите пароль": "Enter password",
     "Войти": "Login",
+    "Выбранная валюта": "Selected currency",
+    "Выбранная страна": "Selected country",
     "Выйти": "Logout",
     "Главная": "Main page",
     "Короткий язык": "EN",
@@ -12,6 +12,7 @@
     "Переключить": "Toggle",
     "Произошла непредвиденная ошибка": "Unexpected error occurred",
     "Профиль": "Profile page",
+    "Статьи": "Articles",
     "Страница не найдена": "Page not found",
     "Форма авторизации": "Authorization form",
     "Язык": "English"

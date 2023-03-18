@@ -1,6 +1,7 @@
 import MainPageIcon from './icons/main-20-20.svg'
 import AboutPageIcon from './icons/about-20-20.svg'
 import ProfileIcon from './icons/profile-20-20.svg'
+import ArticleIcon from './icons/article-20-20.svg'
 import LightIcon from './icons/theme-light.svg'
 import DarkIcon from './icons/theme-dark.svg'
 
@@ -12,6 +13,7 @@ export {
     AboutPageIcon,
     ProfileIcon,
     LightIcon,
-    DarkIcon
+    DarkIcon,
+    ArticleIcon
     // TestAvatar
 }

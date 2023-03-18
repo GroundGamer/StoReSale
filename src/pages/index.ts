@@ -1,4 +1,6 @@
 export { AboutPage } from './AboutPage'
 export { MainPage } from './MainPage'
 export { ProfilePage } from './ProfilePage'
+export { ArticlesPage } from './ArticlesPage'
+export { ArticleDetailsPage } from './ArticleDetailsPage'
 export { NotFoundPage } from './NotFoundPage'
