@@ -2,7 +2,9 @@ import { StoreProvider } from 'app/providers'
 
 import { loginReducer } from 'features/AuthByUsername/model/slice/loginSlice'
 
-import { profileReducer } from 'entities/Profile'
+import { profileReducer } from 'entities/Profile/module/slice/profileSlice'
+
+import { articleDetailsReducer } from 'entities/Article/module/slice/articleDetailsSlice'
 
 
 
@@ -16,7 +18,8 @@ import type { ReducersList } from 'shared/lib'
 
 const defaultAsyncReducers: ReducersList = {
     loginForm: loginReducer,
-    profile: profileReducer
+    profile: profileReducer,
+    articleDetails: articleDetailsReducer
 }
 
 export const StoreDecorator = (

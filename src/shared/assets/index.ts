@@ -5,6 +5,10 @@ import ArticleIcon from './icons/article-20-20.svg'
 import LightIcon from './icons/theme-light.svg'
 import DarkIcon from './icons/theme-dark.svg'
 
+import EyeIcon from './icons/eye-20-20.svg'
+import CalendarIcon from './icons/calendar-20-20.svg'
+import CopyIcon from './icons/copy-20-20.svg'
+
 // import TestAvatar from './tests/test_avatar.jpg'
 
 
@@ -14,6 +18,9 @@ export {
     ProfileIcon,
     LightIcon,
     DarkIcon,
-    ArticleIcon
+    ArticleIcon,
+    EyeIcon,
+    CalendarIcon,
+    CopyIcon
     // TestAvatar
 }

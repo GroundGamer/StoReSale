@@ -11,7 +11,7 @@ export const getAPIErrorMessage = (error: unknown) => {
         const { data } = response || {}
         const { message } = data || {}
 
-        messageError = message
+        messageError = message || 'Not found'
     }
 
     return messageError

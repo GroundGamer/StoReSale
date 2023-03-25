@@ -2,8 +2,9 @@ import React from 'react'
 
 import { THEME } from 'shared/lib'
 
-import { ThemeDecorator } from 'shared/config/storybook'
+import { StoreDecorator, ThemeDecorator } from 'shared/config/storybook'
 
+import { articleData } from 'entities/Article/__mocks__/articleData'
 
 import ArticleDetailsPage from './ArticleDetailsPage'
 
@@ -26,16 +27,17 @@ const Template: ComponentStory<typeof ArticleDetailsPage> = (args) => <ArticleDe
 export const Primary = Template.bind({})
 Primary.args = {
 }
+Primary.decorators = [StoreDecorator({
+    articleDetails: {
+        data: articleData
+    }
+})]
 
 export const PrimaryDark = Template.bind({})
 PrimaryDark.args = {
 }
-PrimaryDark.decorators = [ThemeDecorator(THEME.DARK)]
-
-
-export const Secondary = Template.bind({})
-Secondary.args = {}
-
-export const SecondaryDark = Template.bind({})
-SecondaryDark.args = {}
-SecondaryDark.decorators = [ThemeDecorator(THEME.DARK)]
+PrimaryDark.decorators = [ThemeDecorator(THEME.DARK), StoreDecorator({
+    articleDetails: {
+        data: articleData
+    }
+})]

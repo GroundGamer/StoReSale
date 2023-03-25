@@ -5,7 +5,7 @@ import { THEME } from 'shared/lib'
 import { ThemeDecorator } from 'shared/config/storybook'
 
 
-import { Text, TEXT_THEME } from './Text'
+import { Text, TEXT_SIZE, TEXT_THEME } from './Text'
 
 
 import type { ComponentMeta, ComponentStory } from '@storybook/react'
@@ -47,6 +47,21 @@ PrimaryErrorDark.args = {
     title: 'Primary blablablablablablablablablablablablablablablabla'
 }
 PrimaryErrorDark.decorators = [ThemeDecorator(THEME.DARK)]
+
+export const SizeL = Template.bind({})
+SizeL.args = {
+    size: TEXT_SIZE.L,
+    title: 'Primary blablablablablablablablablablablablablablablabla',
+    text: 'Primary blablablablablablablablablablablablablablablabla'
+}
+
+export const SizeLDark = Template.bind({})
+SizeLDark.args = {
+    size: TEXT_SIZE.L,
+    title: 'Primary blablablablablablablablablablablablablablablabla',
+    text: 'Primary blablablablablablablablablablablablablablablabla'
+}
+SizeLDark.decorators = [ThemeDecorator(THEME.DARK)]
 
 
 export const Secondary = Template.bind({})
