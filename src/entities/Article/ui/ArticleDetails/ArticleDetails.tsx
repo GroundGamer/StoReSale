@@ -6,7 +6,7 @@ import { useSelector } from 'react-redux'
 
 import { CalendarIcon, EyeIcon } from 'shared/assets'
 
-import { classNames, DynamicModuleLoader, useAppDispatch } from 'shared/lib'
+import { classNames, DynamicModuleLoader, useAppDispatch, useInitialEffect } from 'shared/lib'
 
 import { Avatar, Skeleton, Text, TEXT_ALIGN, TEXT_THEME, TEXT_SIZE, Icon } from 'shared/ui'
 
@@ -101,11 +101,9 @@ export const ArticleDetails = React.memo((props: Props) => {
     }, [])
 
 
-    React.useEffect(() => {
-        if (__PROJECT__ !== 'storybook') {
-            dispatch(fetchArticleById(articleId))
-        }
-    }, [dispatch, articleId])
+    useInitialEffect(() => {
+        dispatch(fetchArticleById(articleId))
+    })
 
 
     let content

@@ -1,6 +1,6 @@
 export { classNames } from './classNames/classNames'
 
-export { useTheme, useAppDispatch, useWrapperInput } from './hooks'
+export { useTheme, useAppDispatch, useWrapperInput, useInitialEffect } from './hooks'
 
 export { DynamicModuleLoader } from './components/DynamicModuleLoader/DynamicModuleLoader'
 

@@ -9,8 +9,8 @@ import type { ArticleDetailsSchema } from '../types/Article'
 import { articleData } from '../../__mocks__/articleData'
 
 
-describe('profileSlice', () => {
-    test('test update profile service | pending', () => {
+describe('article details slice', () => {
+    test('test update article details service | pending', () => {
         const state: DeepPartial<ArticleDetailsSchema> = {
             isLoading: false
         }
@@ -19,12 +19,11 @@ describe('profileSlice', () => {
             state as ArticleDetailsSchema,
             fetchArticleById.pending
         )).toEqual({
-            isLoading: true,
-            validateErrors: undefined
+            isLoading: true
         })
     })
 
-    test('test update profile service | fulfilled', () => {
+    test('test update article details service | fulfilled', () => {
         const state: DeepPartial<ArticleDetailsSchema> = {
             isLoading: true
         }

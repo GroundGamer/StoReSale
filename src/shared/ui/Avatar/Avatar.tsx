@@ -8,7 +8,7 @@ import cls from './Avatar.module.scss'
 
 interface Props {
     className?: string
-    src: string | undefined
+    src?: string | undefined
     alt?: string
     size?: number
 }

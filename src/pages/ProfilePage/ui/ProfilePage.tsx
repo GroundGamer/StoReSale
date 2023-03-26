@@ -16,7 +16,7 @@ import {
     getProfileValidateErrors, VALIDATE_PROFILE_ERROR
 } from 'entities/Profile'
 
-import { classNames } from 'shared/lib'
+import { classNames, useInitialEffect } from 'shared/lib'
 
 import { DynamicModuleLoader } from 'shared/lib'
 
@@ -100,12 +100,9 @@ const ProfilePage: React.FC<Props> = (props) => {
     }, [validateErrorTranslations, validateErrors])
 
 
-    React.useEffect(() => {
-        if (__PROJECT__ !== 'storybook') {
-            dispatch(fetchProfileData())
-        }
-    }, [dispatch])
-
+    useInitialEffect(() => {
+        dispatch(fetchProfileData())
+    })
 
 
     return (

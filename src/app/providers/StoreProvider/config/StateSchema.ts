@@ -9,6 +9,7 @@ import type { AnyAction, Reducer, ReducersMapObject, EnhancedStore } from '@redu
 import type { To } from 'history'
 
 import type { LoginSchema } from 'features/AuthByUsername'
+import type { ArticleCommentsSchema } from 'features/ArticleCommentList'
 
 import type { CounterSchema } from 'entities/Counter'
 import type { ProfileSchema } from 'entities/Profile'
@@ -23,6 +24,7 @@ export interface StateSchema {
     profile?: ProfileSchema
     loginForm?: LoginSchema
     articleDetails?: ArticleDetailsSchema
+    articleComments?: ArticleCommentsSchema
 }
 export type StateSchemaKey = keyof StateSchema
 
