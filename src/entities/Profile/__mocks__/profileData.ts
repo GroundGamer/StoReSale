@@ -12,5 +12,6 @@ export const profileData: Profile = {
     first: 'Ivan',
     lastname: 'Ivanov',
     city: 'Volgograd',
+    id: '1',
     currency: Currency.RUB
 }

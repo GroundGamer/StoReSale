@@ -9,6 +9,7 @@ import type { AnyAction, Reducer, ReducersMapObject, EnhancedStore } from '@redu
 import type { To } from 'history'
 
 import type { LoginSchema } from 'features/AuthByUsername'
+import type { AddCommentFormSchema } from 'features/AddCommentForm'
 import type { ArticleCommentsSchema } from 'features/ArticleCommentList'
 
 import type { CounterSchema } from 'entities/Counter'
@@ -25,6 +26,7 @@ export interface StateSchema {
     loginForm?: LoginSchema
     articleDetails?: ArticleDetailsSchema
     articleComments?: ArticleCommentsSchema
+    addCommentForm?: AddCommentFormSchema
 }
 export type StateSchemaKey = keyof StateSchema
 

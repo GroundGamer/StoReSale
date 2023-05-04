@@ -1,5 +1,7 @@
 import React from 'react'
 
+import { useParams } from 'react-router-dom'
+
 import { useTranslation } from 'react-i18next'
 
 import { useSelector } from 'react-redux'
@@ -43,6 +45,8 @@ interface Props {
 
 const ProfilePage: React.FC<Props> = (props) => {
 
+    const { id } = useParams()
+
     const { t } = useTranslation('profile')
 
     const dispatch = useAppDispatch()
@@ -56,7 +60,7 @@ const ProfilePage: React.FC<Props> = (props) => {
     const {
         handleInputStringWrapper,
         handleInputNumberWrapper
-    } = useWrapperInput<KeyProfile>({ action: profileActions.updateProfile })
+    } = useWrapperInput<KeyProfile, typeof profileActions.updateProfile>({ action: profileActions.updateProfile })
 
     const { className = '' } = props
 
@@ -101,7 +105,9 @@ const ProfilePage: React.FC<Props> = (props) => {
 
 
     useInitialEffect(() => {
-        dispatch(fetchProfileData())
+        if (id) {
+            dispatch(fetchProfileData(id))
+        }
     })
 
 

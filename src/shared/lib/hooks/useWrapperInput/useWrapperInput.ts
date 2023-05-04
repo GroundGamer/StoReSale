@@ -8,11 +8,11 @@ import type { ActionCreatorWithPayload } from '@reduxjs/toolkit/src/createAction
 import type { WrapperInput, DataWrapperInput } from 'shared/module'
 
 
-interface Options <Keys = any>{
-    action: ActionCreatorWithPayload<DataWrapperInput<Keys, string | number>>
+interface Options<Keys, Action extends ActionCreatorWithPayload<DataWrapperInput<Keys, any>>> {
+    action: Action
 }
 
-export const useWrapperInput = <Keys = any>(options: Options<Keys>) => {
+function useWrapperInput<Keys, Action extends ActionCreatorWithPayload<DataWrapperInput<Keys, any>>> (options: Options<Keys, Action>) {
 
     const dispatch = useAppDispatch()
 
@@ -20,7 +20,7 @@ export const useWrapperInput = <Keys = any>(options: Options<Keys>) => {
 
 
     const handleInputStringWrapper = React.useCallback<WrapperInput<Keys, string>>(({ field, value }) => {
-        dispatch(action({ field, value }))
+        dispatch(action({ field, value: String(value) }))
     }, [action, dispatch])
 
 
@@ -35,3 +35,5 @@ export const useWrapperInput = <Keys = any>(options: Options<Keys>) => {
 
     return { handleInputStringWrapper, handleInputNumberWrapper }
 }
+
+export default useWrapperInput

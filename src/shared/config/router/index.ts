@@ -17,7 +17,7 @@ export type AppRoutesProps = RouteProps & {
 export const RoutePath: Record<APP_ROUTES, string> = {
     [APP_ROUTES.MAIN]: '/',
     [APP_ROUTES.ABOUT]: '/about',
-    [APP_ROUTES.PROFILE]: '/profile',
+    [APP_ROUTES.PROFILE]: '/profile/', // +id
     [APP_ROUTES.ARTICLES]: '/articles',
     [APP_ROUTES.ARTICLE_DETAILS]: '/articles/',
     [APP_ROUTES.NOT_FOUND]: '*'

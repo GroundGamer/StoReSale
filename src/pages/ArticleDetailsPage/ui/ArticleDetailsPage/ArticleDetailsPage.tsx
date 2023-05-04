@@ -13,6 +13,8 @@ import {
     getArticleCommentsIsLoading
 } from 'features/ArticleCommentList'
 
+import { AddCommentForm } from 'features/AddCommentForm'
+
 import { ArticleDetails } from 'entities/Article'
 
 import { CommentList } from 'entities/Comment'
@@ -21,11 +23,13 @@ import { classNames, DynamicModuleLoader, useAppDispatch, useInitialEffect } fro
 
 import { Text } from 'shared/ui'
 
+import { addCommentForArticle } from '../../module/services/addCommentForArticle/addCommentForArticle'
 
 import cls from './ArticleDetailsPage.module.scss'
 
 
 import type { ReducersList } from 'shared/lib'
+
 
 
 
@@ -56,6 +60,11 @@ const ArticleDetailsPage: React.FC<Props> = (props) => {
     const { className = '' } = props
 
 
+    const onSendComment = React.useCallback((text: string) => {
+        dispatch(addCommentForArticle(text))
+    }, [dispatch])
+
+
     useInitialEffect(() => {
         dispatch(fetchCommentsByArticleId(id))
     })
@@ -79,6 +88,8 @@ const ArticleDetailsPage: React.FC<Props> = (props) => {
                     className={cls.commentTitle}
                     title={t('Комментарии')}
                 />
+
+                <AddCommentForm onSendComment={onSendComment} />
 
                 <CommentList
                     isLoading={isLoadingComments}

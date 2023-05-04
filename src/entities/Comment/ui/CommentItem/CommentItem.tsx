@@ -1,8 +1,10 @@
 import React from 'react'
 
+import { RoutePath } from 'shared/config'
+
 import { classNames } from 'shared/lib'
 
-import { Avatar, Skeleton, Text } from 'shared/ui'
+import { AppLink, Avatar, Skeleton, Text } from 'shared/ui'
 
 import cls from './CommentItem.module.scss'
 
@@ -11,7 +13,7 @@ import type { Comment } from '../../module/types/Comment'
 
 
 interface Props {
-    comment: Comment
+    comment?: Comment
     className?: string
     isLoading?: boolean
 }
@@ -25,7 +27,7 @@ export const CommentItem: React.FC<Props> = (props) => {
 
     if (isLoading) {
         return (
-            <div className={classNames(cls.commentItem, {}, [className])}>
+            <div className={classNames(cls.commentItem, {}, [className, cls.loading])}>
                 <div className={cls.header}>
                     <Skeleton width={30} height={30} border={'50%'} />
 
@@ -38,15 +40,20 @@ export const CommentItem: React.FC<Props> = (props) => {
     }
 
 
+    if (!comment) {
+        return null
+    }
+
+
     return (
         <div className={classNames(cls.commentItem, {}, [className])}>
-            <div className={cls.header}>
+            <AppLink to={`${RoutePath.profile}${comment.user.id}`} className={cls.header}>
                 {comment.user.avatar && (
                     <Avatar size={30} src={comment.user.avatar} />
                 )}
 
                 <Text className={cls.username} title={comment.user.username} />
-            </div>
+            </AppLink>
 
             <Text className={cls.text} text={comment.text} />
         </div>

@@ -29,6 +29,17 @@ export const CommentList: React.FC<Props> = (props) => {
     const { comments = [], isLoading = false } = props
 
 
+    if (isLoading) {
+        return (
+            <div className={classNames(cls.commentList, {}, [className])}>
+                <CommentItem isLoading />
+                <CommentItem isLoading />
+                <CommentItem isLoading />
+            </div>
+        )
+    }
+
+
     return (
         <div className={classNames(cls.commentList, {}, [className])}>
             {comments?.length ? (

@@ -28,7 +28,7 @@ export function DynamicModuleLoader(props: Props) {
 
     const { children } = props
 
-    const { removeAfterUnmount = false } = props
+    const { removeAfterUnmount = true } = props
 
     const { reducers } = props
 
