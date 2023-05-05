@@ -1,15 +1,14 @@
 import React from 'react'
 
+import { useSelector } from 'react-redux'
 
 import { LangSwitcher, ThemeSwitcher } from 'features'
-
 
 import { classNames } from 'shared/lib'
 
 import { Button, BUTTON_THEME, BUTTON_SIZE } from 'shared/ui'
 
-
-import { sidebarItemsList } from '../../model/item'
+import { getSidebarItems } from '../../model/selectors/getSidebarItems/getSidebarItems'
 
 import { SidebarItem } from '../../ui/SidebarItem/SidebarItem'
 
@@ -25,6 +24,7 @@ export const Sidebar = React.memo((props: Props) => {
 
     const { className = '' } = props
 
+    const sidebarItemsList = useSelector(getSidebarItems)
 
     const [collapsed, setCollapsed] = React.useState<boolean>(false)
 

@@ -1,18 +1,19 @@
 import React from 'react'
 
+import { useSelector } from 'react-redux'
+
 import { useTranslation } from 'react-i18next'
+
+import { getUserAuthData } from 'entities/User'
 
 import { classNames } from 'shared/lib'
 
 import { APP_LINK_THEME, AppLink } from 'shared/ui'
 
-
 import cls from './SidebarItem.module.scss'
 
 
-import type { SidebarItemType } from 'widgets/Sidebar/model/item'
-import { useSelector } from 'react-redux'
-import { getUserAuthData } from 'entities/User'
+import type { SidebarItemType } from '../../model/types/Sidebar'
 
 
 interface Props {
